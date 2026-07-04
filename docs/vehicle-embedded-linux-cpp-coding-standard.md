@@ -8,6 +8,10 @@ Application、中间件、系统服务、诊断、通信、存储、升级、日
 
 参考来源见
 [vehicle-embedded-linux-cpp-standards-sources.md](./references/vehicle-embedded-linux-cpp-standards-sources.md)。
+来源覆盖矩阵、离线资料索引和 Obsidian 图谱见
+[vehicle-embedded-linux-cpp-standards-traceability.md](./references/vehicle-embedded-linux-cpp-standards-traceability.md)。
+AI vibe coding 的紧凑检查规则和 Token 节省策略见
+[ai-vibe-coding-cpp-check-rules.md](./ai-vibe-coding-cpp-check-rules.md)。
 本文档以 AUTOSAR C++14、MISRA C++、SEI CERT C++、C++ Core Guidelines 和
 Google C++ Style Guide 的公开信息和工程意图为基础，形成项目内部可执行规则。
 不要把本文档视为 AUTOSAR 或 MISRA 原文替代品；安全审计和客户准入仍以授权标准
@@ -452,9 +456,16 @@ wrapper 必须把平台错误转换为项目错误域，避免上层散落解析
 
 Copilot、Codex、Claude 或其他 AI 工具生成 C++ 前，必须读取：
 
-1. 本文档。
-2. [vehicle-embedded-linux-cpp-standards-sources.md](./references/vehicle-embedded-linux-cpp-standards-sources.md)。
+1. [ai-vibe-coding-cpp-check-rules.md](./ai-vibe-coding-cpp-check-rules.md)。
+2. 本文档。
 3. 当前模块设计文档、接口文件和测试。
+4. `.clang-format`、`.clang-tidy` 和当前模块构建/测试配置。
+
+涉及规范重构、来源覆盖、审计映射、规则冲突或标准解释时，必须额外读取
+[vehicle-embedded-linux-cpp-standards-sources.md](./references/vehicle-embedded-linux-cpp-standards-sources.md)
+和
+[vehicle-embedded-linux-cpp-standards-traceability.md](./references/vehicle-embedded-linux-cpp-standards-traceability.md)。
+禁止为了普通代码生成任务直接加载完整离线大文件。
 
 ### CPP-AI-002 AI 不得擅自扩大范围
 
@@ -540,3 +551,21 @@ Expiry or review date:
 - 覆盖率工具：用于识别未测失败路径，不作为唯一质量指标。
 
 商业项目应使用客户认可的 MISRA/AUTOSAR 覆盖工具，并保留报告。
+
+## 22. 来源覆盖和重构索引
+
+本文档只保留可执行项目规则，不内嵌离线资料全文、授权标准原文、OCR 原始内容或
+长篇示例。常规 AI coding 的紧凑检查规则维护在
+[ai-vibe-coding-cpp-check-rules.md](./ai-vibe-coding-cpp-check-rules.md)。
+来源到规则章节的覆盖关系、Obsidian wikilinks 和 Mermaid 图谱维护在
+[vehicle-embedded-linux-cpp-standards-traceability.md](./references/vehicle-embedded-linux-cpp-standards-traceability.md)。
+
+更新本文档时必须先检查该索引，确认：
+
+- 新来源是否为官方来源、授权来源或已归档的高质量本地资料。
+- 现有章节是否已经覆盖该来源的工程意图，避免重复规则。
+- 新增内容是否能转化为可执行约束、评审检查项、工具门禁或 AI 生成限制。
+- 哪些内容因授权、OCR 质量、低信号网页或项目不适用性不进入正文。
+
+如果新增或删除离线资料，必须同步更新 source map、offline manifest 和 traceability
+index，保持主规范、来源索引和离线归档一致。

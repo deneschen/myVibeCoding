@@ -1,7 +1,9 @@
 # Offline Standards Archive Manifest
 
 - Last curated at: 2026-07-04
+- Compact AI coding checklist: `docs/ai-vibe-coding-cpp-check-rules.md`
 - Source map: `docs/references/vehicle-embedded-linux-cpp-standards-sources.md`
+- Coverage index: `docs/references/vehicle-embedded-linux-cpp-standards-traceability.md`
 - Local Markdown references: `md/`
 - Original PDFs: `pdf/`
 
@@ -52,3 +54,5 @@ page captures that were too noisy for AI context were removed after review.
 - Keep licensed standards as links and access notes unless the project has
   explicit redistribution rights.
 - Prefer official upstream URLs over mirrors.
+- Keep source coverage and Obsidian graph links in the traceability index, not
+  in this manifest.

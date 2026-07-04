@@ -4,9 +4,13 @@ This repository targets product-grade vehicle embedded Linux C++.
 
 Before suggesting C++ code, follow:
 
+- `docs/ai-vibe-coding-cpp-check-rules.md`
 - `docs/vehicle-embedded-linux-cpp-coding-standard.md`
-- `docs/references/vehicle-embedded-linux-cpp-standards-sources.md`
 - `.clang-format` and `.clang-tidy`
+
+Use `docs/references/vehicle-embedded-linux-cpp-standards-sources.md` and
+`docs/references/vehicle-embedded-linux-cpp-standards-traceability.md` only for
+standards updates, rule conflicts, or source coverage questions.
 
 Hard constraints:
 
@@ -19,3 +23,5 @@ Hard constraints:
 - Include tests for new behavior.
 - Keep changes local to the requested task.
 - Follow repository formatting and static-analysis configuration.
+- Save context by citing local rules instead of restating large standards
+  sources.

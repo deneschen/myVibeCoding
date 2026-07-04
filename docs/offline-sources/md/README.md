@@ -3,6 +3,10 @@
 This directory contains only local Markdown files that are useful as AI context
 for rebuilding the vehicle embedded Linux C++ coding standard.
 
+Coverage from these sources to enforceable project rules is tracked in
+[`vehicle-embedded-linux-cpp-standards-traceability.md`](../../references/vehicle-embedded-linux-cpp-standards-traceability.md).
+Do not duplicate full source text in the main coding standard.
+
 ## Primary Sources
 
 - `cpp-core-guidelines.md`

@@ -12,9 +12,12 @@ rules in original wording.
 
 Offline copies generated from this source map are stored under:
 
+- Compact AI coding checklist: `docs/ai-vibe-coding-cpp-check-rules.md`
 - Manifest: `docs/offline-sources/manifest.md`
 - Curated local Markdown references: `docs/offline-sources/md/`
 - Original PDFs: `docs/offline-sources/pdf/`
+- Coverage and Obsidian graph index:
+  `docs/references/vehicle-embedded-linux-cpp-standards-traceability.md`
 
 Original web-page source files are intentionally not retained after conversion.
 The offline manifest lists only local files that currently exist.
@@ -95,14 +98,18 @@ the exact links supplied when the source map was created.
 When asking an AI model to update the C++ coding standard, include this prompt:
 
 ```text
-Read docs/references/vehicle-embedded-linux-cpp-standards-sources.md first.
+Read docs/references/vehicle-embedded-linux-cpp-standards-sources.md and
+docs/references/vehicle-embedded-linux-cpp-standards-traceability.md first.
 Rebuild the vehicle embedded Linux C++ coding standard from the listed sources.
 Target product-grade automotive code. Prioritize AUTOSAR C++14, MISRA C++,
 SEI CERT C++, C++ Core Guidelines, and Google C++ Style Guide in that order.
 Do not copy paid or copyrighted standard text verbatim. Express enforceable
 project rules in original wording. Include rules that constrain AI-generated
 code style and allowed C++ features. Include VS Code Copilot, Codex, and Claude
-usage instructions and review checklists.
+usage instructions and review checklists. Use the traceability matrix to avoid
+duplicating source material that is already covered by project rules. Keep the
+compact AI vibe coding checklist aligned with the main standard so common code
+tasks do not need to read the full source archive.
 ```
 
 ## Maintenance Rules
@@ -113,3 +120,7 @@ usage instructions and review checklists.
 - If a referenced standard is licensed, summarize only project policy and rule
   intent; require the licensed document for audits.
 - When adding sources, explain how they affect enforceable project rules.
+- Update the traceability index whenever source inventory or rule coverage
+  changes.
+- Keep `docs/ai-vibe-coding-cpp-check-rules.md` short and operational; it
+  should point to the main standard instead of duplicating full rule text.
