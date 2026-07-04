@@ -1,0 +1,42 @@
+Checks: >
+  -*,
+  bugprone-*,
+  cert-*,
+  cppcoreguidelines-*,
+  hicpp-*,
+  performance-*,
+  portability-*,
+  readability-*,
+  modernize-use-nullptr,
+  modernize-use-override,
+  modernize-use-default-member-init,
+  modernize-use-equals-default,
+  modernize-use-equals-delete
+WarningsAsErrors: '*'
+HeaderFilterRegex: '.*'
+FormatStyle: file
+CheckOptions:
+  - key: readability-identifier-naming.ClassCase
+    value: CamelCase
+  - key: readability-identifier-naming.StructCase
+    value: CamelCase
+  - key: readability-identifier-naming.EnumCase
+    value: CamelCase
+  - key: readability-identifier-naming.FunctionCase
+    value: camelBack
+  - key: readability-identifier-naming.VariableCase
+    value: lower_case
+  - key: readability-identifier-naming.PrivateMemberSuffix
+    value: _
+  - key: readability-identifier-naming.ConstantCase
+    value: CamelCase
+  - key: readability-identifier-naming.ConstantPrefix
+    value: k
+  - key: readability-function-size.LineThreshold
+    value: '80'
+  - key: readability-function-size.StatementThreshold
+    value: '40'
+  - key: readability-function-size.NestingThreshold
+    value: '4'
+  - key: bugprone-argument-comment.StrictMode
+    value: '1'
