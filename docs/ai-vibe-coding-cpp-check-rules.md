@@ -4,7 +4,10 @@ Purpose: give Copilot, Codex, Claude, and other AI coding tools a compact,
 high-signal checklist for producing product-grade vehicle embedded Linux C++
 while avoiding unnecessary context and token consumption.
 
-This document is the operational entry point. The full rule source of truth is
+The project-level AI workflow entry point is
+[ai-vibe-coding-framework.md](ai-vibe-coding-framework.md), with the operational
+playbook in [ai-coding-product-grade-handbook.md](ai-coding-product-grade-handbook.md).
+This document is the compact C++ coding checklist. The full rule source of truth is
 [vehicle-embedded-linux-cpp-coding-standard.md](vehicle-embedded-linux-cpp-coding-standard.md).
 Source traceability is maintained in
 [vehicle-embedded-linux-cpp-standards-traceability.md](references/vehicle-embedded-linux-cpp-standards-traceability.md).
@@ -15,10 +18,10 @@ Use staged context. Do not load large offline sources by default.
 
 | Stage | Read | Use When | Do Not Read Yet |
 | :--- | :--- | :--- | :--- |
-| T0 | This file, touched source/header/test files, `.clang-format`, `.clang-tidy` | Every C++ task | Offline source archives. |
-| T1 | Main coding standard | Any product C++ generation or non-trivial review | Full AUTOSAR OCR, Core Guidelines, Google style guide. |
-| T2 | Traceability index and source map | Standards updates, rule conflicts, source coverage questions | Full offline source text unless a specific topic requires it. |
-| T3 | Specific offline source section found by targeted search | Deep rule reconstruction or audit mapping | Whole-file reads of large archives without a search target. |
+| T0 | `docs/ai-vibe-coding-framework.md`, `docs/ai-coding-product-grade-handbook.md`, this file, touched source/header/test files, `.clang-format`, `.clang-tidy` | Every C++ task | Raw source archives and unrelated modules. |
+| T1 | Targeted sections of the main coding standard | Non-trivial product C++ generation, cross-cutting review, or rule interpretation | Full AUTOSAR OCR, Core Guidelines, Google style guide. |
+| T2 | Traceability index, source map, raw source inventory | Standards updates, rule conflicts, source coverage questions | Full raw source text unless a specific topic requires it. |
+| T3 | Specific raw source section found by targeted search | Deep rule reconstruction or audit mapping | Whole-file reads of large archives without a search target. |
 
 Rules for saving tokens:
 
@@ -26,8 +29,9 @@ Rules for saving tokens:
 - Quote rule IDs and section names instead of copying long source text.
 - Do not restate the full standard in answers; cite the relevant local rule.
 - Do not summarize unrelated files.
-- Do not inspect generated archives unless the task is about standards,
+- Do not inspect `docs/raw/` unless the task is about standards,
   traceability, or source reconstruction.
+- Do not modify `docs/raw/` or `skills/`.
 
 ## 2. AI Work Contract
 
@@ -110,32 +114,36 @@ Run these passes mentally before proposing or accepting code:
 Small implementation:
 
 ```text
-Use docs/ai-vibe-coding-cpp-check-rules.md and the touched files only unless a
-rule conflict appears. Implement the smallest product-grade C++14 change.
-Apply P0/P1 checks, update tests, and report verification evidence.
+Use docs/ai-vibe-coding-framework.md,
+docs/ai-coding-product-grade-handbook.md,
+docs/ai-vibe-coding-cpp-check-rules.md, and the touched files only unless a
+rule question appears. Implement the smallest product-grade C++14 change, apply
+P0/P1 checks, update tests, and report verification evidence.
 ```
 
 Code review:
 
 ```text
-Review this C++ change against docs/ai-vibe-coding-cpp-check-rules.md.
-Lead with P0/P1 findings only. Do not restate the full standard. Cite local
-rule IDs or sections when useful.
+Review this C++ change against docs/ai-vibe-coding-framework.md,
+docs/ai-coding-product-grade-handbook.md, and
+docs/ai-vibe-coding-cpp-check-rules.md. Lead with P0/P1 findings only. Do not
+restate the full standard. Cite local rule IDs or sections when useful.
 ```
 
 Standards update:
 
 ```text
-Read the main standard, source map, traceability index, and only the targeted
-offline source sections needed for this topic. Update enforceable rules without
-duplicating source text.
+Read the main standard, source map, traceability index, raw source inventory,
+and only the targeted raw source sections needed for this topic. Update
+enforceable rules without duplicating source text.
 ```
 
 Deep source reconstruction:
 
 ```text
-Use targeted search inside offline-sources first. Open full large source files
-only when the search result cannot answer the rule mapping or audit question.
+Use targeted search inside docs/raw first. Open full large source files only
+when the search result cannot answer the rule mapping or audit question. Do not
+modify docs/raw or skills.
 ```
 
 ## 7. Minimal AI Response Shape

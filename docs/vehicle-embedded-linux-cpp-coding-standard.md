@@ -10,10 +10,16 @@ Application、中间件、系统服务、诊断、通信、存储、升级、日
 [vehicle-embedded-linux-cpp-standards-sources.md](./references/vehicle-embedded-linux-cpp-standards-sources.md)。
 来源覆盖矩阵、离线资料索引和 Obsidian 图谱见
 [vehicle-embedded-linux-cpp-standards-traceability.md](./references/vehicle-embedded-linux-cpp-standards-traceability.md)。
+AI vibe coding 总框架见
+[ai-vibe-coding-framework.md](./ai-vibe-coding-framework.md)。
+AI coding 的产品级执行流程、上下文预算和汇报格式见
+[ai-coding-product-grade-handbook.md](./ai-coding-product-grade-handbook.md)。
 AI vibe coding 的紧凑检查规则和 Token 节省策略见
 [ai-vibe-coding-cpp-check-rules.md](./ai-vibe-coding-cpp-check-rules.md)。
 本文档以 AUTOSAR C++14、MISRA C++、SEI CERT C++、C++ Core Guidelines 和
-Google C++ Style Guide 的公开信息和工程意图为基础，形成项目内部可执行规则。
+Google C++ Style Guide 的公开信息和工程意图为基础，并参考 HICPP、ESCR、ANSSI、
+Barr-C 和 SEI CERT C 对嵌入式质量、安全 C/POSIX 边界的约束，形成项目内部可执行
+规则。
 不要把本文档视为 AUTOSAR 或 MISRA 原文替代品；安全审计和客户准入仍以授权标准
 原文、静态分析报告和偏离记录为准。
 
@@ -454,12 +460,18 @@ wrapper 必须把平台错误转换为项目错误域，避免上层散落解析
 
 ### CPP-AI-001 生成前必须读取规范
 
-Copilot、Codex、Claude 或其他 AI 工具生成 C++ 前，必须读取：
+Copilot、Codex、Claude 或其他 AI 工具生成 C++ 前，必须按
+[ai-vibe-coding-framework.md](./ai-vibe-coding-framework.md)
+的上下文预算阶梯读取资料。默认起点为：
 
-1. [ai-vibe-coding-cpp-check-rules.md](./ai-vibe-coding-cpp-check-rules.md)。
-2. 本文档。
-3. 当前模块设计文档、接口文件和测试。
-4. `.clang-format`、`.clang-tidy` 和当前模块构建/测试配置。
+1. [ai-vibe-coding-framework.md](./ai-vibe-coding-framework.md)。
+2. [ai-coding-product-grade-handbook.md](./ai-coding-product-grade-handbook.md)。
+3. [ai-vibe-coding-cpp-check-rules.md](./ai-vibe-coding-cpp-check-rules.md)。
+4. 当前模块设计文档、接口文件和测试。
+5. `.clang-format`、`.clang-tidy` 和当前模块构建/测试配置。
+
+生成非平凡产品 C++、评审跨模块行为、解释规则或紧凑检查规则不足以支撑决策时，
+必须读取本文档相关章节。
 
 涉及规范重构、来源覆盖、审计映射、规则冲突或标准解释时，必须额外读取
 [vehicle-embedded-linux-cpp-standards-sources.md](./references/vehicle-embedded-linux-cpp-standards-sources.md)
@@ -567,5 +579,6 @@ Expiry or review date:
 - 新增内容是否能转化为可执行约束、评审检查项、工具门禁或 AI 生成限制。
 - 哪些内容因授权、OCR 质量、低信号网页或项目不适用性不进入正文。
 
-如果新增或删除离线资料，必须同步更新 source map、offline manifest 和 traceability
-index，保持主规范、来源索引和离线归档一致。
+如果新增或删除 raw 离线资料，必须同步更新 source map、raw source inventory 和
+traceability index，保持主规范、来源索引和 raw 归档一致。`docs/raw/` 和 `skills/`
+为本项目保护目录，框架维护不得修改其中内容。
